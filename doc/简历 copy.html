@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>简历 copy.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E5%BC%A0%E9%B9%8F%E9%B9%8F">张鹏鹏</h1>
+<h2 id="%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF">基本信息</h2>
+<ul>
+<li>
+<p>电话/微信：18393991917</p>
+</li>
+<li>
+<p>邮箱：ZPPHAMOMO@gmail.com</p>
+</li>
+<li>
+<p>博客：blog.hamomo.top</p>
+</li>
+<li>
+<p>学校：江苏大学</p>
+</li>
+<li>
+<p>专业：软件工程</p>
+</li>
+<li>
+<p>年级：2023 年毕业</p>
+</li>
+</ul>
+<h2 id="%E4%B8%93%E4%B8%9A%E6%8A%80%E8%83%BD">专业技能</h2>
+<ul>
+<li>
+<p>框架：React</p>
+</li>
+<li>
+<p>熟悉 git 版本控制工具以及 github 相关操作</p>
+</li>
+<li>
+<p>灵活运用 ant design 提供的组件</p>
+</li>
+<li>
+<p>熟练使用 npm、yarn 包管理工具</p>
+</li>
+<li>
+<p>熟练掌握 HTML5 和 CSS3</p>
+</li>
+</ul>
+<h2 id="%E9%A1%B9%E7%9B%AE%E7%BB%8F%E5%8E%86">项目经历</h2>
+<h3 id="bilibili-%E7%BB%83%E4%B9%A0%E9%A1%B9%E7%9B%AE">bilibili 练习项目</h3>
+<ul>
+<li>
+<p>github 仓库：https://github.com/hamono/bilibili_text</p>
+</li>
+<li>
+<p>项目首页：https://bilibili.hamomo.top</p>
+<p>在学习的过程中遇到了瓶颈，想通过模仿 bilibili 来进一步提高自己的技术水平</p>
+<p>我的预期目标是：</p>
+<ol>
+<li>完成 bi 站首页、稍后再看以及播放页面的 UI 部分</li>
+<li>前后端数据交互，实现稍后再看和播放页的数据从后端获取</li>
+</ol>
+<p>采用的相关技术栈有：</p>
+<ol>
+<li>选定 React 框架</li>
+<li>相关组件从 antd 组件库获取</li>
+<li>使用 Hooks 实现前端逻辑部分</li>
+<li>web-router 实现前端路由</li>
+<li>SWR 发送请求</li>
+</ol>
+<p>在项目进行的过程中遇到了许多问题：</p>
+<ol>
+<li>在 UI 部分，由于首页存在大量重复内容，因此，我对重复部分进行抽象后，封装为独立的组件，相同的内容只需要多次调用组件即可完成，并且实现了内容的组件化、模块化。</li>
+<li>在逻辑部分，我们使用 hooks 进行完成，但是由于对 setState 的更新机制掌握不到位，导致一些逻辑不能正确的实现，在详细阅读相关文档后，对 setState 的异步行为进行总结、测试，最终完成逻辑部分的编写。</li>
+</ol>
+<p>到目前为止，该项目进行过一次重构，解决了难以维护的问题。</p>
+<p>目前，该项目已经有 215 次提交，收获 2 个 star 和 3 个 watch，完成了预期目标的第一点和第二点的大部分内容。</p>
+</li>
+</ul>
+<h3 id="%E6%95%99%E8%82%B2%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE">教育网站项目</h3>
+<ul>
+<li>
+<p>github 仓库：https://github.com/hamono/webTask-educationalWebsite</p>
+</li>
+<li>
+<p>项目首页：https://school.hamomo.top</p>
+<p>网站建设课程要求，完成包括前后端的项目，同时想自己独立完成一个前端项目的开发，检验目前的前端水平。</p>
+<p>我的预期目标是：</p>
+<ol>
+<li>完成网站前端开发，仿照腾讯课堂，实现简单的功能。</li>
+<li>完成相关后端的搭建。</li>
+</ol>
+<p>采用的相关技术栈有：</p>
+<ol>
+<li>选定 React 框架</li>
+<li>相关组件从 antd 组件库获取</li>
+<li>使用 Hooks 实现前端逻辑部分</li>
+<li>其他：React-router 实现前端路由，SWR 发送请求</li>
+</ol>
+<p>在登录注册页面，前端利用 hook 编写相关逻辑验证表单，后端配合json-schema 验证。</p>
+<p>这个过程中，我的设计理念是尽可能减少请求的发送次数，原因有以下两点：</p>
+<ol>
+<li>除一些关键数据（比如登录状态，是否为会员等）从后端获取外，其他的表单信息前端均可以完成严格的验证。</li>
+<li>在发送请求的验证过程中，可能由于网络等原因造成响应时间过长，造成用户页面失去响应,或者因为异步造成 UI 的渲染与实际数据的不匹配。</li>
+</ol>
+<p>就我自己目前的技术阶段，还无法解决这类情况，所以坚持尽量少的发送请求。</p>
+<p>除此之外，这个项目相较 bilibili 在交互上有了一定的提升，提高了用户体验。</p>
+<p>在改项目的开发过程中，我对 nodejs 有了一定的了解，同时对后端服务有了一定了解，这些内容的学习对前端开发有很大的帮助。</p>
+<p>目前该项目进行完成了主要的前端页面的编写，以及登录、注册的后端支持，总计提交 19 次。</p>
+</li>
+</ul>
+
+</body>
+</html>

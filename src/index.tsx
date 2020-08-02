@@ -1,13 +1,15 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
-// import Demo from './useFetch/Demo';
-import App from './main/App';
-// import App from './views/user';
-// import App from './Transtion'
+import HomeLoading from './component/Loading/HomePageLoding';
+const App = React.lazy(() => import('./views/App'));
 
+ReactDOM.render(
+  <React.Suspense fallback={<HomeLoading />}>
+    <App />
+  </React.Suspense>,
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
+  document.getElementById('root')
+);
 
 registerServiceWorker();

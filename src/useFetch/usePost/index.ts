@@ -1,92 +1,32 @@
-import Api from './api';
-import { useState, useCallback } from 'react';
-import useSWR, { responseInterface } from 'swr';
+import React from 'react';
 
-type HttpMethod = 'get' | 'post' | 'put' | 'delete' | 'head' | 'option';
-
-interface Request<
-  Path extends keyof Api,
-  Method extends keyof Api[Path],
-  R = 'request' extends keyof Api[Path][Method] ? 'request' : never
-> {
-  path: Path;
-  method: HttpMethod;
-  request: R extends keyof Api[Path][Method] ? Api[Path][Method][R] : never;
+async function fetcher(path: string, request: string) {
+  const myInit = {
+    headers: new Headers({
+      'Content-Type': 'application/json'
+    }),
+    body: request,
+    method: 'post'
+  };
+  const response = await fetch(`/mock/${path}/post.json`);
+  console.log(myInit);
+  return response.json();
 }
-
-type Response<
-  Path extends keyof Api,
-  Method extends keyof Api[Path],
-  R = 'response' extends keyof Api[Path][Method] ? 'response' : never
-> = responseInterface<
-  R extends keyof Api[Path][Method] ? Api[Path][Method][R] : never,
-  Error
->;
-
-async function fetcher<Path extends keyof Api, Method extends keyof Api[Path]>(
-  path: Path,
-  method: Method & HttpMethod,
-  request: string
-): Promise<Response<Path, Method>['data']> {
-  const isGet = ['head', 'get'].includes(method);
-  const isDev = process.env.NODE_ENV === 'development';
-  if (isDev) {
-    // fetch mock data when dev
-    const response = await fetch(`/mock/${path}/${method}.json`);
-    return response.json();
+export default function usePost(parmer: { path: string; request: object }) {
+  const [data, setData] = React.useState(null);
+  const [suppress, setSuppress] = React.useState(true);
+  const parser = suppress
+    ? null
+    : [parmer.path, JSON.stringify(parmer.request)];
+  if (!suppress) {
+    fetcher(parser[0], parser[1]).then(res => setData(res));
+    setSuppress(true);
   }
-  const apiPath = `/api/${path}`;
-  if (isGet) {
-    const params = new URLSearchParams(JSON.parse(request));
-    const response = await fetch(`${apiPath}?${params.toString()}`, { method });
-    return response.json();
-  } else {
-    const response = await fetch(apiPath, {
-      body: request,
-      method,
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8'
-      }
-    });
-    return response.json();
-  }
+  const revalidate = React.useCallback(() => {
+    setSuppress(false);
+  }, []);
+  return {
+    data,
+    revalidate
+  };
 }
-
-export default function useFetch<
-  Path extends keyof Api,
-  Method extends keyof Api[Path]
->({ path, method, request }: Request<Path, Method>): Response<Path, Method> {
-  const isGet = ['head', 'get'].includes(method);
-  const [suppress, setSuppress] = useState(!isGet);
-  // anyway, the message that only can be json.stringified can be requested
-  const swr = useSWR(
-    suppress ? null : [path, method, JSON.stringify(request)],
-    fetcher,
-    {
-      suspense: isGet,
-      revalidateOnFocus: isGet
-    }
-  );
-  const revalidate = useCallback(() => {
-    if (suppress) {
-      setSuppress(false);
-      return Promise.resolve(true);
-    }
-    return swr.revalidate();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [suppress, swr.revalidate]);
-  if (isGet) {
-    return swr;
-  } else {
-    // do not use { ...swr, revalidate } because you can take a try 🙂
-    return {
-      data: swr.data,
-      error: swr.error,
-      isValidating: swr.isValidating,
-      mutate: swr.mutate,
-      revalidate
-    };
-  }
-}
-
-
