@@ -11,7 +11,6 @@ import useFetch from "src/useFetch/usePost";
 export default function Component(props:{value:string}) {
 const {data,revalidate}=useFetch({
    path:"user/watchLater/add",
-   method:"post",
   request:{id:123456,content:props.value}
  })
   return <div className={style.box}>

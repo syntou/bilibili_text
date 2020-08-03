@@ -2,3 +2,5 @@ node_modules
 build
 scripts
 config
+doc
+tsconfig.json
